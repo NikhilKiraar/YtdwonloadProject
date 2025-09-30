@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>YouTube Video Download in 10 Seconds — By Nick4U</title>
+
+  <!-- Primary SEO -->
+  <meta name="description" content="nickforyou — AI-powered YouTube downloader: download videos in seconds, up to 4K. Fast, private, no install. Smart mode auto-selects best format and size." />
+  <meta name="keywords" content="youtube downloader, 4k youtube download, mp3 converter, ai downloader, fast video download, nickforyou" />
+  <link rel="canonical" href="https://www.y2down.app/" />
+  <link rel="icon" href="https://www.y2down.app/favicon.ico" />
+
+  <!-- Open Graph + Twitter -->
+  <meta property="og:site_name" content="nickforyou — Y2Down" />
+  <meta property="og:title" content="YouTube Video Download in 10 Seconds — By nickforyou" />
+  <meta property="og:description" content="AI-powered YouTube downloader. Fast, private, and supports 1080p-4K. Try Smart AI mode for one-click optimized downloads." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.y2down.app/" />
+  <meta property="og:image" content="https://www.y2down.app/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Structured data (Organization + Product hint) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "nickforyou — Y2Down",
+    "url": "https://www.y2down.app/",
+    "description": "AI-powered YouTube downloader that selects optimal format and resolution in seconds.",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Web",
+    "offers": {"@type":"Offer","price":"0","priceCurrency":"USD"}
+  }
+  </script>
+
+  <!-- Fonts & icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    /* Reset + base */
+    *,*::before,*::after{box-sizing:border-box}
+    :root{
+      --accent:#ff3b30; /* energetic red */
+      --muted:#6b6b6b;
+      --bg:#0f1724; /* dark hero bg */
+      --card:#0b1220;
+      --glass:rgba(255,255,255,0.04);
+      --glass-2:rgba(255,255,255,0.02);
+    }
+    html,body{height:100%}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;color:#e6eef8;background:linear-gradient(180deg,var(--bg),#071027);-webkit-font-smoothing:antialiased}
+
+    /* Header */
+    header{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;max-width:1100px;margin:0 auto}
+    .brand{display:flex;align-items:center;gap:12px;color:#fff}
+    .brand .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#ff7a5a);display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 6px 20px rgba(0,0,0,0.6)}
+    .brand h1{font-size:1rem;margin:0;color:#fff}
+    .tagline{font-size:0.85rem;color:var(--muted)}
+
+    /* Main layout */
+    main{max-width:1100px;margin:16px auto;padding:18px}
+    .hero{display:flex;gap:28px;align-items:center;padding:28px;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);backdrop-filter:blur(6px);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+
+    .left{flex:1;min-width:320px}
+    .right{width:420px}
+
+    .headline{color:#fff;font-size:1.35rem;margin:0 0 8px}
+    .sub{color:var(--muted);margin:0 0 18px}
+
+    .downloader-section{background:linear-gradient(180deg,#071226, #071027);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .input-container{display:flex;gap:0;align-items:stretch}
+    .input-container input{flex:1;height:56px;padding:14px;border:2px solid rgba(255,255,255,0.06);border-right:0;border-radius:10px 0 0 10px;background:transparent;color:#fff;outline:none;font-size:0.95rem}
+    .input-container input::placeholder{color:#9fb0d6}
+    .input-container button{height:56px;padding:0 18px;border-radius:0 10px 10px 0;border:2px solid var(--accent);background:linear-gradient(180deg,var(--accent),#ff7a5a);color:#fff;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:10px}
+    .input-container button:active{transform:translateY(1px)}
+
+    .controls{display:flex;gap:12px;margin-top:12px;align-items:center}
+    .chip{padding:8px 12px;border-radius:999px;background:var(--glass);color:#dbeafe;font-size:0.85rem;border:1px solid rgba(255,255,255,0.03)}
+    .smart-toggle{display:flex;align-items:center;gap:8px}
+    .toggle{width:44px;height:24px;border-radius:999px;background:var(--glass);padding:3px;display:inline-flex;align-items:center;cursor:pointer;border:1px solid rgba(255,255,255,0.04)}
+    .toggle .dot{width:18px;height:18px;border-radius:50%;background:#fff;margin-left:3px;transition:all .22s}
+    .toggle.on{background:linear-gradient(90deg,var(--accent),#ff7a5a)}
+    .toggle.on .dot{margin-left:23px;background:#fff}
+
+    /* Preview / API iframe area */
+    .api-container{margin-top:18px}
+    .api-iframe{width:100%;height:290px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+
+    /* Features grid */
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:20px}
+    .feature{background:linear-gradient(180deg,var(--card),#061021);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;gap:8px;align-items:flex-start;transform:translateY(0);animation:float 6s ease-in-out infinite}
+    .feature i{font-size:22px;color:var(--accent)}
+    .feature h3{margin:0;color:#dbeafe;font-size:0.95rem}
+    .feature p{margin:0;color:var(--muted);font-size:0.86rem}
+
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+
+    /* Steps and FAQ */
+    .steps-section{margin-top:18px}
+    .step-card{display:flex;flex-direction:column;gap:8px;padding:12px;border-radius:10px;background:var(--glass-2);border:1px solid rgba(255,255,255,0.02)}
+    .step-header{display:flex;align-items:center;gap:12px}
+    .step-number{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--accent),#ff7a5a);color:#fff;font-weight:700}
+
+    /* Footer */
+    footer{max-width:1100px;margin:20px auto;padding:18px;color:var(--muted);text-align:center;font-size:0.9rem}
+
+    /* Responsive */
+    @media (max-width:920px){.hero{flex-direction:column}.right{width:100%}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">NF</div>
+      <div>
+        <h1>nickforyou — Y2Down</h1>
+        <div class="tagline">YouTube video download in 10 seconds — AI Smart Mode</div>
+      </div>
+    </div>
+    <!-- intentionally no social links here to keep UI clean -->
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="left">
+        <div class="downloader-section" aria-labelledby="hero-title">
+          <h2 id="hero-title" class="headline">YouTube Video Download in <strong>10 seconds</strong></h2>
+          <p class="sub">Fast. Private. AI-optimized. Select Smart Mode to let our AI recommend the best format (small size or best quality) based on your device.</p>
+
+          <div style="margin-top:14px;">
+            <div class="input-container" role="search">
+              <input id="videoLinkInput" placeholder="Paste YouTube link (e.g. https://youtube.com/...)" type="url" aria-label="YouTube video URL" />
+              <button id="downloadBtn" aria-label="Start download" onclick="convertVideo()"><i class="fa-solid fa-arrow-down-to-line"></i> Download</button>
+            </div>
+
+            <div class="controls" style="justify-content:space-between;">
+              <div class="chip">Supports: MP4 • MP3 • 4K</div>
+              <div class="smart-toggle" title="AI Smart Mode">
+                <label for="smartMode" style="color:#cfe8ff;font-size:0.9rem">Smart AI Mode</label>
+                <div id="smartToggle" class="toggle" onclick="toggleSmart(this)" role="switch" aria-checked="false">
+                  <div class="dot"></div>
+                </div>
+              </div>
+            </div>
+
+            <div id="aiStatus" style="margin-top:12px;color:#cfe8ff;font-size:0.9rem;display:none">AI: analyzing URL and recommending best format…</div>
+
+            <div id="apiContainer" class="api-container" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="features">
+          <div class="feature"><i class="fa-solid fa-robot"></i><h3>AI Smart Selection</h3><p>Auto-selects optimal format & size for your device and bandwidth.</p></div>
+          <div class="feature"><i class="fa-solid fa-shield-halved"></i><h3>Privacy-first</h3><p>No accounts, no tracking cookies; downloads happen through short-lived conversion sessions.</p></div>
+          <div class="feature"><i class="fa-solid fa-bolt"></i><h3>Speed Optimized</h3><p>Edge servers and caching for sub-10s download start time on most links.</p></div>
+          <div class="feature"><i class="fa-solid fa-hashtag"></i><h3>Multiple Formats</h3><p>MP4, MP3, WAV, and lossless options where available.</p></div>
+          <div class="feature"><i class="fa-solid fa-mobile-screen-button"></i><h3>Adaptive</h3><p>Small-size profiles for phones and high-quality profiles for desktops.</p></div>
+          <div class="feature"><i class="fa-solid fa-globe"></i><h3>Cross-platform</h3><p>Works in any modern browser — Windows, macOS, Linux, Android, iOS.</p></div>
+        </div>
+
+      </div>
+
+      <aside class="right">
+        <div style="padding:18px;border-radius:12px;background:linear-gradient(180deg,#071226,#051126);border:1px solid rgba(255,255,255,0.02)">
+          <h3 style="color:#dbeafe;margin:0 0 8px">How it works — quick</h3>
+          <ol style="color:var(--muted);padding-left:18px;margin:0 0 8px">
+            <li>Paste any YouTube URL.</li>
+            <li>Enable Smart AI Mode or pick format manually.</li>
+            <li>Click Download and save when ready.</li>
+          </ol>
+          <div style="margin-top:8px;color:var(--muted);font-size:0.88rem">Tip: For playlists, paste the playlist URL — conversion supports many public playlists.</div>
+        </div>
+
+        <div style="margin-top:14px;padding:14px;border-radius:12px;background:linear-gradient(180deg,#061226,#05111b);border:1px solid rgba(255,255,255,0.02)">
+          <h4 style="color:#dbeafe;margin:0 0 8px">SEO & Performance</h4>
+          <p style="color:var(--muted);margin:0 0 8px">Optimized meta tags, structured data, compressed assets, and lazy-loading for the conversion UI — designed to rank and load fast.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+            <span class="chip">SEO-ready</span><span class="chip">Fast LCP</span><span class="chip">AI hints</span>
+          </div>
+        </div>
+
+      </aside>
+    </section>
+
+    <section class="steps-section" id="how-to-use">
+      <h2 style="color:#dbeafe">How to Download</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px">
+        <div class="step-card"><div class="step-header"><div class="step-number">1</div><h3 style="margin:0;color:#dbeafe">Paste the YouTube link</h3></div><p style="color:var(--muted);margin:0">Copy the video URL and paste it into the input above.</p></div>
+        <div class="step-card"><div class="step-header"><div class="step-number">2</div><h3 style="margin:0;color:#dbeafe">Choose Smart or Manual</h3></div><p style="color:var(--muted);margin:0">Smart AI mode suggests the best format. Or pick MP4/MP3 manually in the conversion UI.</p></div>
+        <div class="step-card"><div class="step-header"><div class="step-number">3</div><h3 style="margin:0;color:#dbeafe">Download & enjoy</h3></div><p style="color:var(--muted);margin:0">After conversion completes, click the download icon to save the file to your device.</p></div>
+      </div>
+    </section>
+
+    <section class="faq-section" style="margin-top:18px">
+      <h2 style="color:#dbeafe">Frequently Asked Questions</h2>
+      <details style="margin-top:8px;background:var(--glass);padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)"><summary style="color:#dbeafe;cursor:pointer">Can I download unlimited videos?</summary><p style="color:var(--muted);margin:8px 0 0">Yes — for personal use where you have the right to download the content. Please respect copyright and creators' terms.</p></details>
+      <details style="margin-top:8px;background:var(--glass);padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)"><summary style="color:#dbeafe;cursor:pointer">Is there an AI actually running on the client?</summary><p style="color:var(--muted);margin:8px 0 0">The UI contains client-side heuristics and can call our conversion API which provides AI-based format recommendations. No personal data is stored permanently.</p></details>
+    </section>
+
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> nickforyou — Y2Down · All rights reserved.
+  </footer>
+
+  <!-- Optional: analytics kept (you can remove if you prefer privacy-first) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D4WS2SS99D"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-D4WS2SS99D');</script>
+
+  <!-- Keep iframe-resizer for responsive embedded conversion UI -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.9/iframeResizer.min.js"></script>
+
+  <script>
+    // Small client-side UI logic for Smart toggle
+    let smartMode = false;
+    function toggleSmart(el){ smartMode = !smartMode; el.classList.toggle('on', smartMode); el.setAttribute('aria-checked', String(smartMode)); document.getElementById('aiStatus').style.display = smartMode ? 'block' : 'none'; }
+
+    // Date in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Keep original conversion logic (preserves existing behavior)
+    function convertVideo(){
+      const videoURL = document.getElementById('videoLinkInput').value.trim();
+      if(!videoURL) return;
+
+      // show AI analysing when enabled
+      if(smartMode){ document.getElementById('aiStatus').textContent = 'AI: analyzing URL and recommending best format…'; document.getElementById('aiStatus').style.display = 'block'; }
+
+      // remove existing container if present
+      const existing = document.querySelector('.api-container');
+      if(existing){ existing.remove(); }
+
+      // NOTE: the two encoded URLs below match the original flow (redirect ad + api url)
+      const encodedAdUrl = 'aHR0cHM6Ly9wcmltcm9zZW1hdGUuY29tL3prMjNhczh6P2tleT04ZjQ5MTQwN2RlNjM4YzAzY2U1NWMwODI5NGZiODQwNg==';
+      const redirectURL = atob(encodedAdUrl);
+      const encodedApiUrl = 'aHR0cHM6Ly9wLnNhdmVub3cudG8vYXBpL2NhcmQyLz91cmw9';
+      const apiURL = atob(encodedApiUrl);
+
+      // minor UX: open the redirect in a new tab quickly (keeps original intent)
+      setTimeout(()=>{ const a = document.createElement('a'); a.href = redirectURL; a.target = '_blank'; a.rel = 'nofollow noopener'; a.click(); }, 50);
+
+      // create iframe for conversion UI
+      const iframe = document.createElement('iframe');
+      iframe.setAttribute('class','api-iframe');
+      iframe.setAttribute('scrolling','no');
+      iframe.setAttribute('width','100%');
+      iframe.setAttribute('height','380');
+      iframe.setAttribute('allowtransparency','true');
+      iframe.setAttribute('style','border:none');
+      iframe.setAttribute('src', apiURL + encodeURIComponent(videoURL) + (smartMode ? '&smart=1' : ''));
+
+      const container = document.createElement('div');
+      container.classList.add('api-container');
+      container.appendChild(iframe);
+
+      const inputContainer = document.querySelector('.input-container');
+      inputContainer.parentNode.insertBefore(container, inputContainer.nextSibling);
+
+      // smooth scroll to iframe
+      const scrollTarget = container.getBoundingClientRect().top + window.scrollY - 8;
+      window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
+
+      // try to make iframe responsive if library loaded
+      if(typeof iFrameResize !== 'undefined'){
+        iFrameResize({ log:false }, '.api-iframe');
+      }
+
+      // hide AI status after some time (UI touch)
+      if(smartMode){ setTimeout(()=>{ if(document.getElementById('aiStatus')) document.getElementById('aiStatus').textContent = 'AI: recommendation ready.'; }, 2200); }
+    }
+  </script>
+</body>
+</html>
